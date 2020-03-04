@@ -5,16 +5,13 @@ import { Button } from './components/Button';
 import { Product, ProductMobile } from './components/Product';
 import { LogoWhite, LogoBlue } from "./components/Logo";
 import {Progress} from "./components/Progress";
-import {StartPage} from "./page/StartPage";
 import { store } from './redux/store';
 
 function App() {
   return (
     <Provider store={store}>
       <div>
-        <Page>
-          <StartPage/>
-        </Page>
+        <Page />
 
         <Button isMargin isSuccess>Button 1</Button>
         <Button isMargin>Button 2</Button>

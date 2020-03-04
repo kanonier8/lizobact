@@ -6,9 +6,10 @@ interface IButtonProps{
     isSuccess?: boolean;
     isMargin?: boolean;
     children: string;
+    onClick?: () => void;
 }
 
-export function Button({ children, isSuccess, isMargin }: IButtonProps) {
+export function Button({ children, isSuccess, isMargin, onClick }: IButtonProps) {
     const classes = classNames(
         styles.button,
         {
@@ -17,7 +18,7 @@ export function Button({ children, isSuccess, isMargin }: IButtonProps) {
         },
     );
     return (
-        <button className={classes}>
+        <button className={classes} onClick={onClick}>
             { children }
         </button>
     )

@@ -12,17 +12,18 @@ export interface ISetUid {
   type: typeof SET_UID,
 }
 
-export function setPage(page: TPage): ISetPage {
+export const setPage = (page: TPage): ISetPage => {
   console.log('run set page');
   return {
     type: SET_PAGE,
     payload: page
   }
-}
+};
 
-export function setUid() {
+export const setUid = () => {
   console.log('run uid');
   return (dispatch: any) => {
+    console.log('aaaaa bbbb');
     fetch('https://lisobact.ctc.ru/api/quiz/init', {
       method: 'GET'
     })
@@ -34,5 +35,5 @@ export function setUid() {
         })
       )
   }
-}
+};
 

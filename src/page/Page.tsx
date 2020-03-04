@@ -1,30 +1,51 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setPage, setUid } from '../redux/actions';
-import { TPage } from '../redux/reducers/pageReducer';
+import { setUid } from '../redux/actions';
+import { IPage } from '../redux/reducers/pageReducer';
 import styles from './Page.module.css';
+import { QuizPage } from './QuizPage';
+import { ResultPage } from './ResultPage';
+import { StartPage } from './StartPage';
 
 export interface IPageProps {
-    children: ReactElement;
-    setUidAction: any;
-    setPageAction: any;
+    setUidAction?: any;
+    setPageAction?: any;
+    page: IPage,
 }
 
-function PageC({ children, setUidAction, setPageAction }: IPageProps) {
+function Page({ setUidAction, setPageAction, page}: IPageProps) {
+    let pageComponent;
+    switch (page.type) {
+        case 'start':
+            pageComponent = <StartPage />;
+            break;
+        case 'result':
+            pageComponent = <ResultPage />;
+            break;
+        case 'quiz':
+            pageComponent = <QuizPage />;
+            break;
+    }
     useEffect(()=> {
         setUidAction();
-        setPageAction('result');
-    });
+    }, []);
     return (
         <div className={styles.page}>
-            { children }
+            { pageComponent }
         </div>
     )
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
-    setPageAction: (page: TPage) => dispatch(setPage),
-    setUidAction: () => dispatch(setUid)
-});
+const mapStateToProps = (state: any) => {
+    return {
+        page: state.page
+    }
+};
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        setUidAction: () => dispatch(setUid())
+    }
+};
 
-export const Page = connect(null , mapDispatchToProps)(PageC);
+const ConnectedPage = connect(mapStateToProps , mapDispatchToProps)(Page);
+export { ConnectedPage as Page };
