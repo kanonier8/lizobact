@@ -7,6 +7,7 @@ import styles from './StartPage.module.css';
 import {LogoBlue} from "../../components/Logo";
 import {ProductMobile, Product} from "../../components/Product";
 import {ProgressTitle} from "../../components/Progress/ProgressTitle";
+import ReactGA from 'react-ga';
 
 
 interface IStartPageProps {
@@ -14,7 +15,8 @@ interface IStartPageProps {
 }
 function StartPage({ setPageAction }: IStartPageProps) {
   const handleClick = () => {
-    setPageAction('quiz');
+      ReactGA.ga('send', 'event', 'test', 'Button_Click', 'Участвовать');
+      setPageAction('quiz');
   };
     return (
         <div className={styles.start}>
@@ -24,7 +26,7 @@ function StartPage({ setPageAction }: IStartPageProps) {
                         <div className={styles.logo}>
                             <LogoBlue />
                         </div>
-                        <div className={styles.product}>
+                        <div className={styles.product} onClick={() => { ReactGA.ga('send', 'event', 'Logo', 'Button_Click', 'Упаковка'); }}>
                             <ProductMobile />
                             <Product />
                         </div>

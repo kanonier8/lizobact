@@ -6,6 +6,7 @@ import {Button} from "../../components/Button";
 import {Product} from "../../components/Product";
 import {LogoWhite} from "../../components/Logo";
 import {sendEmail} from "../../redux/actions";
+import ReactGA from 'react-ga';
 
 interface IResultPageProps {
     uid: string,
@@ -22,6 +23,7 @@ function ResultPage({totalCount, uid, score, sendEmailAction}: IResultPageProps)
         title = 'а ты знаток!';
     }
     const sendMailHandler = () => {
+        ReactGA.ga('send', 'event', 'Test', 'Button_Click', 'Отправить почту');
         sendEmailAction(uid, email)
     };
     const [email, setEmail] = useState('');

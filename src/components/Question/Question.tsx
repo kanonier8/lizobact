@@ -4,6 +4,7 @@ import styles from './Question.module.css';
 import { Button } from "../Button";
 import {checkAnswer, nextQuestion} from "../../redux/actions";
 import {connect} from "react-redux";
+import ReactGA from 'react-ga';
 
 interface IQuestionProps extends IQuestion{
     isFetching: boolean,
@@ -17,6 +18,7 @@ interface IQuestionProps extends IQuestion{
 function Question({ title, isFetching, counter, answersResult, answers, image, nextQuestionAction, checkAnswerAction, uid }: IQuestionProps) {
     const length = answers.data.length;
     const answerHandler = (id: string, uid: string) => {
+        ReactGA.ga('send', 'event', 'Test', 'Button_Click', (counter + 1)+'_вопрос');
         if (Object.keys(answersResult)[counter]) return false;
         if (answersResult[id] === undefined && !isFetching) {
             checkAnswerAction(id, uid, () => {
