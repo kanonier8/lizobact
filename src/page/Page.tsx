@@ -6,24 +6,26 @@ import styles from './Page.module.css';
 import { QuizPage } from './QuizPage';
 import { ResultPage } from './ResultPage';
 import { StartPage } from './StartPage';
+import { MarkState, MarkAlert } from '../components/Mark';
 
 export interface IPageProps {
+    totalCount: number;
     setUidAction?: any;
     setPageAction?: any;
     page: IPage,
 }
 
-function Page({ setUidAction, setPageAction, page}: IPageProps) {
+function Page({ setUidAction, setPageAction, totalCount, page}: IPageProps) {
     let pageComponent;
     switch (page.type) {
         case 'start':
             pageComponent = <StartPage />;
             break;
         case 'result':
-            pageComponent = <ResultPage />;
+            pageComponent = <ResultPage uid={page.uid} totalCount={totalCount} />;
             break;
         case 'quiz':
-            pageComponent = <QuizPage />;
+            pageComponent = <QuizPage uid={page.uid}/>;
             break;
     }
     useEffect(()=> {
@@ -32,13 +34,16 @@ function Page({ setUidAction, setPageAction, page}: IPageProps) {
     return (
         <div className={styles.page}>
             { pageComponent }
+            <MarkState page={page.type} />
+            <MarkAlert />
         </div>
     )
 }
 
 const mapStateToProps = (state: any) => {
     return {
-        page: state.page
+        page: state.page,
+        totalCount: state.quiz.data.length,
     }
 };
 const mapDispatchToProps = (dispatch: any) => {

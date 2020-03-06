@@ -2,10 +2,18 @@
     width: 280px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .progressItemList {
     display: flex;
     align-items: center;
+}
+
+
+@media screen and (min-width: 990px){
+    .progress {
+        width: 380px;
+        justify-content: flex-start;
+    }
 }

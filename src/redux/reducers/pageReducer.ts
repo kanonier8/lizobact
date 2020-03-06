@@ -12,7 +12,6 @@ const initialState: IPage = {
 };
 
 export function pageReducer(state = initialState, action: AnyAction) {
-  console.log('pageReducer action', action);
   switch (action.type) {
     case SET_PAGE:
       return { ...state, type: action.payload };

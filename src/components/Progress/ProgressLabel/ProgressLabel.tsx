@@ -7,6 +7,6 @@ interface IProgressLabel {
 
 export function ProgressLabel({ counter = 1 }: IProgressLabel) {
     return (
-        <div className={styles.label}>Вопрос {counter}</div>
+        <div className={styles.label}>Вопрос&nbsp;{counter}</div>
     )
 }

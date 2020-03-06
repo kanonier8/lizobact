@@ -13,11 +13,32 @@
     border: none;
     font-family: 'regular';
     line-height: 1;
+    outline: none;
 }
 .buttonSuccess {
     background-color: #4e8c17;
 }
 
+.buttonWrong {
+    background-color: #bb0f0f;
+}
+
 .buttonMargin {
     margin-bottom: 14px;
+}
+
+@media screen and (max-width: 320px){
+    .buttonMargin {
+        margin-bottom: 8px;
+    }
+    .button {
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 990px){
+    .buttonMargin {
+        margin-bottom: 12px;
+    }
 }

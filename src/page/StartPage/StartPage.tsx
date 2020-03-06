@@ -4,6 +4,9 @@ import { Button } from '../../components/Button';
 import { setPage } from '../../redux/actions';
 import { TPage } from '../../redux/reducers/pageReducer';
 import styles from './StartPage.module.css';
+import {LogoBlue} from "../../components/Logo";
+import {ProductMobile, Product} from "../../components/Product";
+import {ProgressTitle} from "../../components/Progress/ProgressTitle";
 
 
 interface IStartPageProps {
@@ -11,13 +14,43 @@ interface IStartPageProps {
 }
 function StartPage({ setPageAction }: IStartPageProps) {
   const handleClick = () => {
-    console.log('setPageAction', setPageAction)
     setPageAction('quiz');
   };
     return (
         <div className={styles.start}>
             <div className={styles.container}>
-              <Button onClick={handleClick}> Участвовать </Button>
+                <div className={styles.content}>
+                    <div className={styles.head}>
+                        <div className={styles.logo}>
+                            <LogoBlue />
+                        </div>
+                        <div className={styles.product}>
+                            <ProductMobile />
+                            <Product />
+                        </div>
+                        <p className={styles.conditions}>Сроки проведения конкурса с 01.03.2020 по 30.04.2020. <br/>
+                            Подробная информация об организаторах конкурса, сроках, месте <br/>
+                            и порядке проведения на сайте ctc.ru </p>
+                    </div>
+                    <div className={styles.body}>
+                        <div className={styles.titleBlock}>
+                            <ProgressTitle />
+                        </div>
+                        <h1 className={styles.title}>
+                            Ответь правильно на&nbsp;5&nbsp;вопросов и получи
+                            <p>Гарантированный приз!</p>
+                        </h1>
+                        <a className={styles.link} href="https://more.tv" target="_blank">
+                            <span>подписка</span>&nbsp;на more.tv
+                        </a>
+                        <div className={styles.button}>
+                            <Button onClick={handleClick}>Участвовать</Button>
+                        </div>
+                        <p className={styles.conditions}>Сроки проведения конкурса с 01.03.2020 по 30.04.2020. <br/>
+                            Подробная информация об организаторах конкурса, сроках, месте <br/>
+                            и порядке проведения на сайте ctc.ru </p>
+                    </div>
+                </div>
             </div>
         </div>
     )

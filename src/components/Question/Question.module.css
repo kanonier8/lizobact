@@ -1,0 +1,52 @@
+.title {
+    font-family: 'medium';
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    height: 58px;
+}
+
+.image {
+    width: 100%;
+    margin: 20px auto 10px;
+}
+
+.image img {
+    width: 100%;
+}
+.optionsTitle {
+    display: none;
+}
+
+@media screen and (min-width: 990px) {
+    .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .head {
+        width: 420px;
+    }
+    .title {
+        font-size: 45px;
+        line-height: 1;
+    }
+    .image {
+        width: 300px;
+        margin-left: 0;
+        margin-right: auto;
+    }
+    .body {
+        width: 350px;
+        margin-right: 40px;
+    }
+    .optionsTitle {
+        display: block;
+        text-transform: uppercase;
+        font-size: 21px;
+        font-family: 'medium';
+        color: #ffffff;
+        opacity: .4;
+        margin: 0 0 5px 0;
+    }
+}

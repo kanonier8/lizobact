@@ -1,16 +1,96 @@
 .start {
     min-width: 320px;
-    min-height: 310px;
+    min-height: 340px;
+    width: 100%;
     background: url('img/mobile.jpg') no-repeat center;
-    background-size: auto;
+    background-size: contain;
     padding: 12px;
     box-sizing: border-box;
 }
 .container {
     margin: 0 auto;
     padding: 0;
-    width: 300px;
+    width: 100%;
+    max-width: 350px;
 }
+
+
+.logo {
+    width: 140px;
+}
+
+.product {
+    width: 150px;
+    left: -10px;
+    position: relative;
+    padding-top: 10px;
+}
+.product div:last-child {
+    display: none;
+}
+
+.content {
+    display: flex;
+}
+
+.body {
+    width: 200px;
+    padding-left: 15px;
+    text-align: right;
+}
+
+.title {
+    color: #fff;
+    text-align: right;
+    font-size: 18px;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.title p {
+    color: #f79446;
+    margin: 5px 0 0 0;
+    font-size: 26px;
+}
+
+.titleBlock {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;;
+}
+
+.link {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    border: 1px solid #f79446;
+    margin-bottom: 10px;
+}
+.link span {
+    text-transform: uppercase;
+}
+
+.conditions {
+    width: 275px;
+    color: #fff;
+    opacity: .4;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    position: absolute;
+    padding-top: 0;
+    right: 10px;
+}
+
+.head .conditions {
+    display: none;
+}
+
+
 @media screen and (max-width: 320px){
     .start {
         background-size: 320px;
@@ -18,6 +98,108 @@
         min-height: 290px;
     }
     .container {
-        width: 280px;
+        width: 100%;
+    }
+    .logo {
+        width: 116px;
+        margin-bottom: 5px;
+    }
+    .product {
+        width: 120px;
+        position: relative;
+        left: -5px;
+    }
+    .link {
+        font-size: 16px;
+    }
+    .title p {
+        font-size: 22px;
+    }
+    .conditions {
+        font-size: 7px;
+    }
+}
+
+
+
+@media screen and (min-width: 990px ) {
+    .start {
+        max-width: 990px;
+        background: url('./img/desktop.jpg') no-repeat center;
+        background-size: cover;
+        min-height: 0;
+        height: 400px;
+        padding: 40px 30px;
+        box-sizing: border-box;
+    }
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+    .head {
+        width: 570px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        position: relative;
+    }
+    .product {
+        width: 400px;
+    }
+    .product div:last-child {
+        display: block;
+    }
+    .product div:first-child {
+        display: none;
+    }
+    .logo {
+        width: 220px;
+        position: absolute;
+        right: 0;
+        top: 30px;
+    }
+    .body {
+        width: 300px;
+    }
+    .title p {
+        font-size: 46px;
+    }
+    .title {
+        font-size: 30px;
+    }
+    .link {
+        width: 180px;
+        height: 30px;
+        font-size: 15px;
+        font-family: Arial, sans-serif;
+        position: relative;
+        top: -44px;
+        left: 25px;
+    }
+    .button {
+        width: 220px;
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+        font-size: 18px;
+    }
+    .conditions {
+        display: none;
+    }
+    .head .conditions {
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        margin: 0;
+        width: 540px;
+        font-size: 11px;
+    }
+    .head .conditions br:last-child {
+        display: none;
     }
 }

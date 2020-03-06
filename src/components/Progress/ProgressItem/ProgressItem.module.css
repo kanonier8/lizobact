@@ -36,3 +36,14 @@
 .itemSuccess {
     background-color: #4e8c17;
 }
+
+@media screen and (min-width: 990px){
+    .item {
+        width: 26px;
+        height: 26px;
+    }
+    .item:after {
+        width: 36px;
+        height: 36px;
+    }
+}

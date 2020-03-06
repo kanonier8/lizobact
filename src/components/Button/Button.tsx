@@ -4,16 +4,18 @@ import styles from './Button.module.css';
 
 interface IButtonProps{
     isSuccess?: boolean;
+    isWrong?: boolean;
     isMargin?: boolean;
     children: string;
     onClick?: () => void;
 }
 
-export function Button({ children, isSuccess, isMargin, onClick }: IButtonProps) {
+export function Button({ children, isWrong, isSuccess, isMargin, onClick }: IButtonProps) {
     const classes = classNames(
         styles.button,
         {
             [styles.buttonSuccess]: isSuccess,
+            [styles.buttonWrong]: isWrong,
             [styles.buttonMargin]: isMargin,
         },
     );

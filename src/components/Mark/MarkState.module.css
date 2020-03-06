@@ -1,0 +1,36 @@
+.state {
+    position: absolute;
+    left: -45px;
+    transform: rotate(90deg) translate(-50%, 0);
+    z-index: 5;
+    color: #ffffff;
+    opacity: .4;
+    font-size: 6px;
+    font-family: Arial, sans-serif;
+    bottom: 3px;
+    margin: 0;
+}
+
+.quiz {
+    bottom: auto;
+    top: 200px;
+}
+
+.result {
+    bottom: 80px;
+}
+
+@media screen and (max-width: 320px) {
+    .state {
+        left: -50%;
+    }
+}
+
+@media screen and (min-width: 990px) {
+    .state {
+        font-size: 11px;
+        bottom: 0;
+        left: -90px;
+        top: auto;
+    }
+}

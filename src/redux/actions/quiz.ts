@@ -17,7 +17,7 @@ export function getQuiz(uid: string) {
       .then(response =>
         dispatch({
           type: GET_QUIZ_SUCCESS,
-          payload: response,
+          payload: response.data,
         })
       )
       .catch(error => {
@@ -31,3 +31,5 @@ export function getQuiz(uid: string) {
   }
 
 }
+
+

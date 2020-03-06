@@ -1,3 +1,47 @@
 .quiz {
-    background-image: url('img/mobile.jpg');
+    min-width: 320px;
+    min-height: 670px;
+    background: url('img/mobile.jpg') no-repeat center;
+    background-size: contain;
+    padding: 25px 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    width: 320px;
+}
+@media screen and (max-width: 320px){
+    .quiz {
+        background-size: 320px;
+        background-position: top center;
+        min-height: 568px;
+    }
+    .container {
+        width: 100%;
+    }
+}
+
+
+@media screen and (min-width: 990px ) {
+    .quiz {
+        max-width: 990px;
+        background: url('./img/desktop.jpg') no-repeat center;
+        background-size: cover;
+        min-height: 0;
+        height: 400px;
+        padding: 38px 30px;
+    }
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+    .head {
+        width: 450px;
+    }
 }
