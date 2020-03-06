@@ -18,6 +18,10 @@ function StartPage({ setPageAction }: IStartPageProps) {
       ReactGA.ga('send', 'event', 'test', 'Button_Click', 'Участвовать');
       setPageAction('quiz');
   };
+  const postMessageSent = (link: string) => {
+      const linkHref = 'outer__' + link;
+      window.parent.postMessage(linkHref, '*');
+  }
     return (
         <div className={styles.start}>
             <div className={styles.container}>
@@ -42,7 +46,9 @@ function StartPage({ setPageAction }: IStartPageProps) {
                             Ответь правильно на&nbsp;5&nbsp;вопросов и получи
                             <p>Гарантированный приз!</p>
                         </h1>
-                        <a className={styles.link} href="https://more.tv" target="_blank">
+                        <a className={styles.link} onClick={() => {
+                            postMessageSent('https://more.tv')
+                        }} href="https://more.tv" target="_blank">
                             <span>подписка</span>&nbsp;на more.tv
                         </a>
                         <div className={styles.button}>

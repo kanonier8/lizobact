@@ -8,5 +8,7 @@
 @media screen and (min-width: 990px ) {
     .page {
         max-width: 990px;
+        max-height: 400px;
+        overflow: hidden;
     }
 }

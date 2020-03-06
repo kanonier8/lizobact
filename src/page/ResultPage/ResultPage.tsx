@@ -26,6 +26,10 @@ function ResultPage({totalCount, uid, score, sendEmailAction}: IResultPageProps)
         ReactGA.ga('send', 'event', 'Test', 'Button_Click', 'Отправить почту');
         sendEmailAction(uid, email)
     };
+    const postMessageSent = (link: string) => {
+        const linkHref = 'outer__' + link;
+        window.parent.postMessage(linkHref, '*');
+    };
     const [email, setEmail] = useState('');
     return (
         <div className={styles.result}>
@@ -36,7 +40,11 @@ function ResultPage({totalCount, uid, score, sendEmailAction}: IResultPageProps)
                         <h1 className={styles.title}>{ title }</h1>
                         <article className={styles.descWrap}>
                             <p className={styles.desc}>
-                                Введи почту и получи в подарок от Лизобакт промокод на&nbsp;10&nbsp;дней&nbsp;на&nbsp;<a target="_blank" href="https://more.tv">more.tv</a>
+                                Введи почту и получи в подарок от Лизобакт промокод на&nbsp;10&nbsp;дней&nbsp;на&nbsp;<a target="_blank"
+                                                                                                                         onClick={() => {
+                                                                                                                             postMessageSent('https://more.tv')
+                                                                                                                         }}
+                                                                                                                         href="https://more.tv">more.tv</a>
                             </p>
                             { desc && <p>{desc}</p> }
                         </article>
