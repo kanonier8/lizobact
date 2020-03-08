@@ -16,7 +16,7 @@ export function setResult(text: string): ISetResult {
 }
 
 
-export function sendEmail(uid: string, email: string) {
+export function sendEmail(uid: string, email: string, callback: any) {
   return (dispatch: any) => {
 
   dispatch({
@@ -32,12 +32,13 @@ export function sendEmail(uid: string, email: string) {
       body: urlencoded,
     })
         .then(response => response.json())
-        .then(response =>
-            dispatch({
-              type: SEND_EMAIL_SUCCESS,
-              payload: response.data,
-            })
-        )
+        .then(response => {
+          dispatch({
+            type: SEND_EMAIL_SUCCESS,
+            payload: response.data,
+          });
+          callback();
+        })
         .catch(error => {
           dispatch({
             type: SEND_EMAIL_ERROR,

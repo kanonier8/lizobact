@@ -8,7 +8,7 @@ export interface IProgress {
   error: boolean | string;
 }
 
-const initialState = {
+const initialState: IProgress = {
   answersResult: {},
   counter: 0,
   isFetching: false,

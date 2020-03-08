@@ -15,7 +15,7 @@ export interface IPageProps {
     page: IPage,
 }
 
-function Page({ setUidAction, setPageAction, totalCount, page}: IPageProps) {
+function Page({ setUidAction, totalCount, page}: IPageProps) {
     let pageComponent;
     switch (page.type) {
         case 'start':
@@ -25,7 +25,7 @@ function Page({ setUidAction, setPageAction, totalCount, page}: IPageProps) {
             pageComponent = <ResultPage uid={page.uid} totalCount={totalCount} />;
             break;
         case 'quiz':
-            pageComponent = <QuizPage uid={page.uid}/>;
+            pageComponent = <QuizPage uid={page.uid} />;
             break;
     }
     useEffect(()=> {

@@ -61,7 +61,7 @@
 }
 
 .link {
-    height: 30px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,6 +70,7 @@
     width: 100%;
     border: 1px solid #f79446;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 .link span {
     text-transform: uppercase;
@@ -164,21 +165,25 @@
     }
     .body {
         width: 300px;
+        position: relative;
     }
     .title p {
         font-size: 46px;
     }
     .title {
         font-size: 30px;
+        padding-bottom: 40px;
     }
     .link {
-        width: 180px;
+        width: 176px;
         height: 30px;
         font-size: 15px;
         font-family: Arial, sans-serif;
-        position: relative;
-        top: -44px;
-        left: 25px;
+        position: absolute;
+        top: 161px;
+        right: 100px;
+        margin-bottom: 0;
+        border: 2px solid #f79446;
     }
     .button {
         width: 220px;

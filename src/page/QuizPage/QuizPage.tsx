@@ -5,7 +5,7 @@ import {IQuestion} from "../../redux/reducers/quizReducer";
 import {connect} from "react-redux";
 import {Progress} from "../../components/Progress";
 import {Question} from "../../components/Question";
-import {Preloader} from "../../components/Preloader/Preloader";
+import {Preloader} from "../../components/Preloader";
 import {TPage} from "../../redux/reducers/pageReducer";
 
 interface IQuizPageProps {

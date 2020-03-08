@@ -11,7 +11,7 @@
 @media screen and (min-width: 990px){
     .label {
         font-size: 21px;
-        padding: 0 15px;
+        padding: 0 0 0 15px;
         top: 0;
     }
 }

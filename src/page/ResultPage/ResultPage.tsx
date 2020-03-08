@@ -18,19 +18,35 @@ interface IResultPageProps {
 function ResultPage({totalCount, uid, score, sendEmailAction}: IResultPageProps) {
     let title = 'Хорошая попытка!';
     let desc = 'Смотри шоу и сериалы СТС и не только!';
+    const [email, setEmail] = useState('');
+    const [text, setText] = useState('Отправить');
     if (score && score >= 4) {
         desc = '';
         title = 'а ты знаток!';
     }
     const sendMailHandler = () => {
         ReactGA.ga('send', 'event', 'Test', 'Button_Click', 'Отправить почту');
-        sendEmailAction(uid, email)
+        if (email.length > 3 && validateEmail(email)) {
+            sendEmailAction(uid, email, () => {
+                setText('Промокод отправлен!');
+                setTimeout(() => {
+                    setText('Отправить');
+                    setEmail('');
+                    if (document.location) {
+                        document.location.reload();
+                    }
+                }, 2000)
+            })
+        }
+    };
+    const validateEmail = (email: string) => {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     };
     const postMessageSent = (link: string) => {
         const linkHref = 'outer__' + link;
         window.parent.postMessage(linkHref, '*');
     };
-    const [email, setEmail] = useState('');
     return (
         <div className={styles.result}>
             <div className={styles.container}>
@@ -49,10 +65,10 @@ function ResultPage({totalCount, uid, score, sendEmailAction}: IResultPageProps)
                             { desc && <p>{desc}</p> }
                         </article>
                         <div className={styles.form}>
-                            <input type="text" className={styles.input} placeholder="email" value={email} onChange={(event) => {
+                            <input type="email" className={styles.input} placeholder="email" value={email} onChange={(event) => {
                                 setEmail(event.target.value);
                             }}/>
-                            <Button onClick={sendMailHandler}>Отправить</Button>
+                            <Button onClick={sendMailHandler}>{text}</Button>
                         </div>
                         <p className={styles.conditions}>Сроки проведения конкурса с 01.03.2020 по 30.04.2020. <br/>Подробная информация об организаторах конкурса, сроках, месте и порядке проведения на сайте ctc.ru</p>
                     </div>
@@ -77,7 +93,7 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-    sendEmailAction: (uid: string, email: string) => dispatch(sendEmail(uid, email))
+    sendEmailAction: (uid: string, email: string, callback: any) => dispatch(sendEmail(uid, email, callback))
 });
 
 const ConnectedResultPage = connect(mapStateToProps, mapDispatchToProps)(ResultPage);

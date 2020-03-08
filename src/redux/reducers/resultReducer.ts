@@ -2,14 +2,12 @@ import { AnyAction } from 'redux';
 import {SEND_EMAIL_ERROR, SEND_EMAIL_REQUEST, SEND_EMAIL_SUCCESS} from "../actions";
 
 export interface IResult {
-  title: string,
   score: number,
   subscribeStatus: string,
   error: string | boolean,
 }
 
 const initialState: IResult = {
-  title: 'Some title',
   score: 0,
   subscribeStatus: '',
   error: false,

@@ -21,7 +21,7 @@ export function Button({ children, isWrong, isSuccess, isMargin, onClick }: IBut
     );
     return (
         <button className={classes} onClick={onClick}>
-            { children }
+            <span>{ children }</span>
         </button>
     )
 }

@@ -27,6 +27,10 @@
 .buttonMargin {
     margin-bottom: 14px;
 }
+.button span {
+    position: relative;
+    top: 3px;
+}
 
 @media screen and (max-width: 320px){
     .buttonMargin {

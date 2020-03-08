@@ -6,6 +6,7 @@ export interface IPage {
   type: TPage,
   uid: string
 }
+
 const initialState: IPage = {
   type: 'start',
   uid: ''
