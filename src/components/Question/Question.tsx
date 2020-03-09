@@ -43,7 +43,7 @@ function Question({ title, isFetching, counter, answersResult, answers, image, n
                 <div className={styles.image}>
                     <img src={image} alt={title}/>
                 </div>
-                <div className={styles.title}>{title}</div>
+                <div className={styles.title} dangerouslySetInnerHTML={{__html: title}} />
             </div>
             <div className={styles.body}>
                 <h4 className={styles.optionsTitle}>Варианты ответа:</h4>
